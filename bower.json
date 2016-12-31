@@ -1,0 +1,27 @@
+{
+  "name": "adoc",
+  "authors": [
+    "Rayapati",
+    "Naresh <naresh.rayapati@yahoo.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "asciidoctor.js": "^1.5.4",
+    "platform.js": "platform#^1.3.3",
+    "polymer": "^1.7.1",
+    "font-awesome": "^4.7.0",
+    "highlightjs": "^9.8.0",
+    "chartist": "^0.10.1",
+    "MathJax": "^2.7.0"
+  }
+}

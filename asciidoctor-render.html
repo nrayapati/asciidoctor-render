@@ -1,0 +1,67 @@
+<script src="bower_components/asciidoctor.js/dist/asciidoctor-all.min.js"></script>
+<script src="bower_components/highlightjs/highlight.pack.min.js"></script>
+<script src="bower_components/chartist/dist/chartist.min.js"></script>
+<script src="bower_components/asciidoctor.js/dist/asciidoctor-emoji-inline-macro.js"></script>
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css" />
+<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="bower_components/highlightjs/styles/github.css">
+<link rel="stylesheet" href="css/themes/foundation.css"/>
+<link rel="stylesheet" href="css/twemoji-awesome.css"/>
+
+<polymer-element name="asciidoctor-render" attributes="mode, theme">
+    <template>
+      <content></content>
+    </template>
+    <script>
+        Polymer({
+            is: 'asciidoctor-render',
+            properties: {
+                mode: {
+                    type: String,
+                    value: 'render'
+                },
+                theme: {
+                    type: String,
+                    value: 'foundation'
+                }
+            },
+            modeChanged: function(oldMode, newMode) {
+                this.execute()
+            },
+            render: function() {
+                var options = Opal.hash({
+                    doctype: 'article',
+                    backend: 'html5',
+                    safe: 'safe',
+                    attributes: ['platform=opal', 
+                                 'platform-opal', 
+                                 'env=browser',
+                                 'env-browser', 
+                                 'source-highlighter=highlight.js', 
+                                 'showtitle', 
+                                 'icons=font@', 
+                                 'chart-engine=chartist']
+                });
+                this.innerHTML = Opal.Asciidoctor.$convert(this.original_data, options);
+                hljs.initHighlightingOnLoad()
+            },
+            raw: function() {
+                this.innerHTML = "<pre><code>" + this.original_data + "</code></pre>";
+            },
+            execute: function() {
+                if ("render" === this.mode) {
+                    this.render();
+                } else {
+                    this.raw();
+                }
+            },
+            ready: function() {
+                this.original_data = this.textContent;
+                this.execute();
+            }
+        });
+    </script>
+</polymer-element>

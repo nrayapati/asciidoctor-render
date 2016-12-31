@@ -1,0 +1,93 @@
+<html>
+<head>
+  <title>Asciidoctor Demo</title>
+  <script src="../bower_components/platform.js/platform.js"></script>
+  <link rel="import" href="../asciidoctor-render.html" />
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0;
+      background-color: #E5E5E5;
+      font-family: 'RobotoDraft', sans-serif;
+    }
+    .container {
+      width: 80%;
+      margin: 50px auto;
+    }
+    @media (min-width: 481px) {
+      #tabs {
+        width: 400px;
+      }
+      .container {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+  <div class="container" layout>
+    <asciidoctor-render mode="render">
+= Source code listing
+:toc:
+:source-highlighter: highlight.js
+
+== icon:pencil-square-o[] Welcome (Font Awesome Icons)
+
+icon:id-card[]
+icon:bath[]
+icon:google[]
+icon:apple[]
+icon:certificate[]
+
+== Emojis 
+emoji:heart[]
+emoji:sparkles[]
+emoji:thumbsup[]
+emoji:turtle[]
+
+== Source Code highlighting
+
+Code listings look cool with Asciidoctor and highlight.js with {highlightjs-theme} theme.  
+
+=== Groovy
+[source,groovy]
+----
+// File: User.groovy
+class User {
+    String username
+}
+----
+
+=== SQL
+[source,sql]
+----
+CREATE TABLE USER (
+    ID INT NOT NULL,
+    USERNAME VARCHAR(40) NOT NULL
+);
+----
+
+=== Ruby      
+[source,ruby]
+----
+require 'sinatra' // <1>
+
+get '/hi' do // <2>
+  "Hello World!" // <3>
+end
+----      
+<1> Library import
+<2> URL mapping
+<3> HTTP response body
+
+=== Clojure
+[source,clojure]
+----
+(map #(vector (first %) (* 2 (second %)))
+            {:a 1 :b 2 :c 3})
+
+(into {} *1)
+----
+
+include::https://raw.githubusercontent.com/opendevise/asciidoc-samples/master/demo.adoc[]
+    </asciidoctor-render>
+  </div>
