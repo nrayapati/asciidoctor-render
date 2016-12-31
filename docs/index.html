@@ -2,29 +2,15 @@
 <head>
   <title>Asciidoctor Demo</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.3/platform.js"></script>
-  <link rel="import" href="https://cdn.rawgit.com/nrayapati/asciidoctor-render/master/asciidoctor-render.html" />
+  <link rel="import" href="../asciidoctor-render.html" />
   <style>
-    html,body {
-      height: 100%;
-      margin: 0;
-      background-color: #E5E5E5;
-      font-family: 'RobotoDraft', sans-serif;
-    }
-    .container {
+    .adoc-content {
       width: 80%;
       margin: 50px auto;
     }
-    @media (min-width: 481px) {
-      #tabs {
-        width: 400px;
-      }
-      .container {
-        width: 90%;
-      }
-    }
   </style>
 </head>
-  <div class="container" layout>
+  <div class="adoc-content1">
     <asciidoctor-render mode="render">
 = Source code listing
 :toc:
