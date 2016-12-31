@@ -3,7 +3,6 @@
 /classes
 /checkouts
 /bin
-pom.xml.asc
 *.jar
 *.class
 *.iml
