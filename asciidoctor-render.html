@@ -32,20 +32,37 @@
                 this.execute()
             },
             render: function() {
-                var options = Opal.hash({
-                    doctype: 'article',
-                    backend: 'html5',
-                    safe: 'safe',
-                    attributes: ['platform=opal', 
-                                 'platform-opal', 
-                                 'env=browser',
-                                 'env-browser', 
-                                 'source-highlighter=highlight.js', 
-                                 'showtitle', 
-                                 'icons=font@', 
-                                 'chart-engine=chartist']
-                });
-                this.innerHTML = Opal.Asciidoctor.$convert(this.original_data, options);
+                var attrs = Opal.hash({'linkcss': '', 'copycss!': ''});
+                var options = Opal.hash({'doctype': 'article', 
+                                         'backend': 'html5', 
+                                         'safe': 'safe', 
+                                         'header_footer': true, 
+                                         'attributes': ['platform=opal', 
+                                                        'platform-opal', 
+                                                        'env=browser',
+                                                        'env-browser', 
+                                                        'source-highlighter=highlight.js', 
+                                                        'showtitle', 
+                                                        'icons=font@', 
+                                                        'chart-engine=chartist'
+                                                       ]});
+              
+                // var options = Opal.hash({
+                //     doctype: 'article',
+                //     backend: 'html5',
+                //     safe: 'safe',
+                //     attributes: ['platform=opal', 
+                //                  'platform-opal', 
+                //                  'env=browser',
+                //                  'env-browser', 
+                //                  'source-highlighter=highlight.js', 
+                //                  'showtitle', 
+                //                  'icons=font@', 
+                //                  'chart-engine=chartist']
+                // });
+                var html = Opal.Asciidoctor.$convert(this.original_data, options);
+                console.log(html)
+                this.innerHTML = html;
                 hljs.initHighlightingOnLoad()
             },
             raw: function() {
